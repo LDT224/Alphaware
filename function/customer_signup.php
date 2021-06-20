@@ -13,7 +13,7 @@
 	$telephone=$_POST['telephone'];
 	$email=$_POST['email'];
 	$password=$_POST['password'];
-	$check = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `customer` WHERE `email` = '$email'"));
+	$check = pg_num_rows(mysqli_query($conn, "SELECT * FROM `customer` WHERE `email` = '$email'"));
 		if($check == 1)
 			{
 				echo "<script>alert('EMAIL ALREADY EXIST')</script>";	 
@@ -21,9 +21,9 @@
 			
 			else
 				{
-					mysqli_query ($conn, "INSERT INTO customer (firstname, mi, lastname, address, country, zipcode, mobile, telephone, email, password)
+					pg_query ($conn, "INSERT INTO customer (firstname, mi, lastname, address, country, zipcode, mobile, telephone, email, password)
 					VALUES ('$firstname', '$mi', '$lastname', '$address', '$country', '$zipcode', '$mobile', '$telephone', '$email', '$password')") 
-					or die(mysqli_error());	
+					or die(pg_error());	
 				}				
 					
 }

@@ -119,15 +119,15 @@
 			
 			<?php 
 				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = pg_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (pg_error());
 				
-					while($fetch = mysqli_fetch_array($query))
+					while($fetch = pg_fetch_array($query))
 						{
 							
 						$pid = $fetch['product_id'];
 						
-						$query1 = mysqli_query($conn, "SELECT * FROM stock WHERE product_id = '$pid'") or die (mysqli_error());
-						$rows = mysqli_fetch_array($query1);
+						$query1 = pg_query($conn, "SELECT * FROM stock WHERE product_id = '$pid'") or die (pg_error());
+						$rows = pg_fetch_array($query1);
 						
 						$qty = $rows['qty'];
 						if($qty <= 5){
